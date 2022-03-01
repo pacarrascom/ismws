@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+
+Route::get('/vulnerabilidades', [App\Http\Controllers\vulnerabilidadesController::class, 'index'])->name('vulnerabilidades')->middleware('auth');
+Route::get('/indicadores', [App\Http\Controllers\indicadoresController::class, 'index'])->name('indicadores')->middleware('auth');
